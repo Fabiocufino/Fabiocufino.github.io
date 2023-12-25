@@ -3,7 +3,7 @@ class Particle {
         this.pos = createVector(x, y);
         this.vel = createVector(0, 0);
         this.acc = createVector(random(0, 0), random(0, 0));
-        this.mass = random(1, 10);
+        this.mass = random(1, 3);
         this.maxSpeed = 22
 
         // Uncomment the next two lines if you want to use updatePrev
