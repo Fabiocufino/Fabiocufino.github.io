@@ -17,6 +17,9 @@ function mousePressed() {
     for (let i = 0; i < particle.length; i++) {
         particle[i].pos.x = random(0, windowWidth * 0.7);
         particle[i].pos.y = random(0, windowHeight * 0.7);
+
+        particle[i].vel.x = 0;
+        particle[i].vel.y = 0;
     }
 }
 
