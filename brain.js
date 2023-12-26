@@ -52,6 +52,10 @@ function draw() {
         particle[i].show();
     }
 
+    //draw the history of one particle
+    for (let i = 0; i < particle.length; i++) {
+        particle[i].showHistory();
+    }
 
     //compute the gravitational force between the particles
     for (let i = 0; i < particle.length; i++) {
@@ -96,5 +100,7 @@ function draw() {
     fill(255, 255, 255);
     textSize(15);
     text("m: rand(1,5)", windowWidth - 130, windowHeight - 30);
+
+
     
 }

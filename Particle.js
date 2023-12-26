@@ -10,6 +10,8 @@ class Particle {
         this.height = windowHeight-10;
 
         this.radius = this.mass * 2;
+
+        this.history = [];
     }
 
     show() {
@@ -34,6 +36,13 @@ class Particle {
         this.vel.limit(this.maxSpeed);
         this.pos.add(this.vel);
         this.acc.mult(0); // Reset the acceleration
+
+        //stor the history of last 100 steps
+        let v = createVector(this.pos.x, this.pos.y);
+        this.history.push(v);
+        if (this.history.length > 100) {
+            this.history.splice(0, 1);
+        }
     }
 
     edges() {
@@ -53,5 +62,17 @@ class Particle {
             this.pos.y = 0;
             this.vel.y *= -0.5; // Reverse y velocity to bounce
         }
+    }
+
+    showHistory() {
+        noFill();
+        strokeWeight(1);
+        stroke(255, 255, 255, 50);
+        beginShape();
+        for (let i = 0; i < this.history.length; i++) {
+            let pos = this.history[i];
+            vertex(pos.x, pos.y);
+        }
+        endShape();
     }
 }
