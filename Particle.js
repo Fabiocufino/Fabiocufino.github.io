@@ -16,7 +16,7 @@ class Particle {
         strokeWeight(1);
 
         this.update();
-        // this.edges();
+        this.edges();
 
         // Change color of ellipse
         fill(255, 255, 255);
@@ -36,22 +36,22 @@ class Particle {
         this.acc.mult(0); // Reset the acceleration
     }
 
-    // edges() {
-    //     if (this.pos.x > this.width) {
-    //         this.pos.x = this.width;
-    //         this.vel.x *= -1; // Reverse x velocity to bounce
-    //     }
-    //     if (this.pos.x < 0) {
-    //         this.pos.x = 0;
-    //         this.vel.x *= -1; // Reverse x velocity to bounce
-    //     }
-    //     if (this.pos.y > this.height) {
-    //         this.pos.y = this.height;
-    //         this.vel.y *= -1; // Reverse y velocity to bounce
-    //     }
-    //     if (this.pos.y < 0) {
-    //         this.pos.y = 0;
-    //         this.vel.y *= -1; // Reverse y velocity to bounce
-    //     }
-    // }
+    edges() {
+        if (this.pos.x > this.width) {
+            this.pos.x = this.width;
+            this.vel.x *= -0.5; // Reverse x velocity to bounce
+        }
+        if (this.pos.x < 0) {
+            this.pos.x = 0;
+            this.vel.x *= -0.5; // Reverse x velocity to bounce
+        }
+        if (this.pos.y > this.height) {
+            this.pos.y = this.height;
+            this.vel.y *= -0.5; // Reverse y velocity to bounce
+        }
+        if (this.pos.y < 0) {
+            this.pos.y = 0;
+            this.vel.y *= -0.5; // Reverse y velocity to bounce
+        }
+    }
 }
