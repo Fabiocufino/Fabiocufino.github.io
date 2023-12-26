@@ -28,21 +28,30 @@ function setup() {
     createCanvas(windowWidth-10, windowHeight-10);
 
 
-    particle = new Array(100); // Fix variable name (from "particle" to "particle")
+    particle = new Array(101); // Fix variable name (from "particle" to "particle")
     for (let i = 0; i < particle.length; i++) {
         let x_in = random(0, windowWidth -50);
         let y_in = random(0, windowHeight -50);
         particle[i] = new Particle(x_in, y_in);
     }
+    particle[101] = new Particle((windowWidth-10) /2, (windowHeight-10)/2);
 }
 
 function draw() {
     background(0, 0, 0);
 
+    //show the center particle 
+    particle[101].pos.x = (windowWidth-10) /2;
+    particle[101].pos.y = (windowHeight-10) /2;
+    particle[101].mass = 200;
+    particle[101].show();
+
+
     //show the 100 particles
     for (let i = 0; i < particle.length; i++) {
         particle[i].show();
     }
+
 
     //compute the gravitational force between the particles
     for (let i = 0; i < particle.length; i++) {
@@ -58,33 +67,24 @@ function draw() {
         }
     }
 
-    //update the particles
-    for (let i = 0; i < particle.length; i++) {
-        particle[i].update();
-    }
+    //partice 101 does not move
+    particle[101].acc.mult(0);
+    particle[101].vel.mult(0);
 
-    //update the previous position of the particles
-    for (let i = 0; i < particle.length; i++) {
-        particle[i].updatePrev();
-    }
-
-    //draw the center of the screen
+    //draw tnis particle as red
     fill(255, 0, 0);
     ellipse((windowWidth-10) /2, (windowHeight-10) /2, 10, 10);
+        
 
-    //draw the border of the screen
-    strokeWeight(1);
-    noFill();
-    rect(0, 0, windowWidth * 0.7, windowHeight * 0.7);
+    textFont('Monospace');
 
     //draw the text
     fill(255, 255, 255);
     textSize(20);
-    text("Particles", 10, 30);
-    textSize(10);
+    text("Particles", 10, 40);
+    textSize(15);
+    text("By: @faunofobici", 10, 60);
     fill(255, 0, 0);
-    text("By: @faunofobici", 10, 45);
-    fill(0);
-    text("Click to reset", 10, 60);
+    text("Click to reset", 10, 80);
     
 }
