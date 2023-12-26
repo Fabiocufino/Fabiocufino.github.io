@@ -21,6 +21,10 @@ function mousePressed() {
 
         particle[i].vel.x = 0;
         particle[i].vel.y = 0;
+
+        //clean history
+        particle[i].history = [];
+        
     }
 }
 
