@@ -83,8 +83,18 @@ function draw() {
     textSize(20);
     text("Particles", 10, 40);
     textSize(15);
-    text("By: @faunofobici", 10, 60);
+    text("By: @Fabiocufino", 10, 60);
     fill(255, 0, 0);
     text("Click to reset", 10, 80);
+
+
+    //text on the bottom right
+    fill(255, 0, 0);
+    textSize(15);
+    text("M: " + particle[101].mass, windowWidth - 130, windowHeight - 45);
+
+    fill(255, 255, 255);
+    textSize(15);
+    text("m: rand(1,5)", windowWidth - 130, windowHeight - 30);
     
 }
