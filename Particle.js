@@ -1,13 +1,22 @@
 class Particle {
     constructor(x, y) {
         this.pos = createVector(x, y);
-        this.vel = createVector(random(-2,2), random(-2, 2));
+        // this.vel = createVector(random(-2,2), random(-2, 2));
+        this.vel = createVector(random(-1,1), random(-1,1));
+
         this.acc = createVector(0, 0);
         this.mass = random(1, 5);
+
+
+        this.color = color(255, 255, 255);
+        
+
         this.maxSpeed = 22
 
         this.width = windowWidth-10;
         this.height = windowHeight-10;
+
+
 
         this.radius = this.mass * 2;
 
@@ -21,7 +30,7 @@ class Particle {
         this.edges();
 
         // Change color of ellipse
-        fill(255, 255, 255);
+        fill(this.color);
         ellipse(this.pos.x, this.pos.y, this.radius, this.radius);
 
     }

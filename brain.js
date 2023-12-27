@@ -24,7 +24,7 @@ function mousePressed() {
 
         //clean history
         particle[i].history = [];
-        
+
     }
 }
 
@@ -45,19 +45,32 @@ function draw() {
     background(0, 0, 0);
 
     //show the center particle 
-    particle[101].pos.x = (windowWidth-10) /2;
-    particle[101].pos.y = (windowHeight-10) /2;
-    particle[101].mass = 200;
-    particle[101].show();
+    // particle[101].pos.x = (windowWidth-10) /2;
+    // particle[101].pos.y = (windowHeight-10) /2;
 
-
-    //show the 100 particles
-    for (let i = 0; i < particle.length; i++) {
-        particle[i].show();
-    }
+    // pos x and y of red particle are the mouse pointer
+     // Set position of the red particle to the mouse pointer
+     particle[101].pos.x = mouseX;
+     particle[101].pos.y = mouseY;
+ 
+     particle[101].mass = 200;
+ 
+     // Show all particles
+     for (let i = 0; i < particle.length; i++) {
+         if (i !== 101) { // Skip the red particle
+             particle[i].show();
+         }
+         else {
+            //draw tnis particle as red
+            particle[101].radius = 10;
+            particle[101].color = color(255, 0, 0);
+            particle[101].show();
+         }
+     }
 
     //draw the history of one particle
     for (let i = 0; i < particle.length; i++) {
+        if (i != 101)
         particle[i].showHistory();
     }
 
@@ -78,10 +91,6 @@ function draw() {
     //partice 101 does not move
     particle[101].acc.mult(0);
     particle[101].vel.mult(0);
-
-    //draw tnis particle as red
-    fill(255, 0, 0);
-    ellipse((windowWidth-10) /2, (windowHeight-10) /2, 10, 10);
         
 
     textFont('Monospace');
@@ -104,7 +113,5 @@ function draw() {
     fill(255, 255, 255);
     textSize(15);
     text("m: rand(1,5)", windowWidth - 130, windowHeight - 30);
-
-
     
 }
